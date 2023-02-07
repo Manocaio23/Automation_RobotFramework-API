@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.11.1 on win32)" generated="20230206 21:43:46.528" rpa="false" schemaversion="3">
+<suite id="s1" name="Desafio Api Test" source="C:\Users\CAIO\Desktop\Projeto API\tests\desafio_api_test.robot">
+<test id="s1-t1" name="Cenário 01: Realizar tranferencia interna" line="13">
+<kw name="Consultar Extrato" library="consultaExtrato_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization="Bearer "+${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230206 21:43:46.926" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': '"Bearer "+"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUUUY0c2p5RUJfRUthV0VfSkxEZExHMVlKYXVnNklTV0tQbEdEeG9qNzhjIn0.eyJleHAiOjE2NzU...</msg>
+<status status="PASS" starttime="20230206 21:43:46.925" endtime="20230206 21:43:46.926"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>alias=Stone</arg>
+<arg>url=${BASE}</arg>
+<arg>verify=True</arg>
+<arg>headers=${headers}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230206 21:43:46.926" level="INFO">Creating Session using : alias=Stone, url=https://sandbox-api.openbank.stone.com.br, headers={'Content-Type': 'application/json', 'Authorization': '"Bearer "+"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUUUY0c2p5RUJfRUthV0VfSkxEZExHMVlKYXVnNklTV0tQbEdEeG9qNzhjIn0.eyJleHAiOjE2NzU2MTM1ODEsImlhdCI6MTY3NTYxMDg4MSwianRpIjoiNmE1YzVmOGUtYzhiZi00NWM4LTg5M2QtYzBhNmM5YTMzNWFiIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi5zYW5kYm94LnN0b25lLmNvbS5ici9hdXRoL3JlYWxtcy9zdG9uZV9hY2NvdW50Iiwic3ViIjoiZDliZDkzNmUtNzBkNi00OThmLTg2YzktOTA4N2VkZjY5OGNjIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6ImY1ZTNkY2JiLWRmODAtNDU0My1hYThlLTc2MTQ1N2IwNTgxMyIsImFjciI6IjEiLCJzY29wZSI6ImV4cGVuZDp0cmFuc2ZlcnM6ZXh0ZXJuYWwgZW50aXR5OmxlZ2FsX3dyaXRlIHBpeDplbnRyeV9jbGFpbSBwaXg6cGF5bWVudF9pbnZvaWNlIGVudGl0eTp3cml0ZSBleHBlbmQ6Ym9sZXRvaXNzdWFuY2UgZXhwZW5kOnBheW1lbnRzIGVudGl0eTpyZWFkIHByaW5jaXBhbDpjb25zZW50IGVtYWlsIHBpeDplbnRyeSBzdG9uZV9hY2NvdW50cyBwcm9maWxlIGV4cGVuZDpyZWFkIGV4cGVuZDp0cmFuc2ZlcnM6aW50ZXJuYWwgcGl4OnBheW1lbnQgc3RvbmVfc3ViamVjdF9pZCBwYXltZW50YWNjb3VudDoqIiwic2lkIjoiZjVlM2RjYmItZGY4MC00NTQzLWFhOGUtNzYxNDU3YjA1ODEzIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInN0b25lX3N1YmplY3RfaWQiOiJ1c2VyOjYzMjRhNGM4LTZhZTYtNDJmMi1hYmQxLWExZWEyOWIwY2QxNSIsIm5hbWUiOiJEZXNhZmlvIFFBIERlc2FmaW8gUUEiLCJzdG9uZV9hY2NvdW50cyI6ImVuYWJsZWQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZXNhZmlvcWFzdG9uZUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiRGVzYWZpbyBRQSIsImxvY2FsZSI6InB0LUJSIiwiZmFtaWx5X25hbWUiOiJEZXNhZmlvIFFBIiwiZW1haWwiOiJkZXNhZmlvcWFzdG9uZUBnbWFpbC5jb20ifQ.buTPMwgsZlXWGV2E185jtvZu4REBVG4pXfP0Z-gh7hjT9BCS6BTjvAYF8YlvsjQdj8WY4gedskTiNYQxU48x6VblLtwrYWa9EeqcgiWP61m2OsONdhXB4YqFgrZYYYo2jjw2Pf7PHxjz6VpXxuzZxwIty1hdinVm7-UaGllnaX3ygpi2iOveYTQtPQUvw4SkI6MICLhoDggQJ_Ff4VDCuZB5ZumvY4UmLsljiZQmq7XOHbm1WFiHwC9yT2tabZZox-vvPKOQPePm3ojhmjGm1cvzf_4AoyUBCDb2krzE5zwUmUzXeVF-VDdDWO_7hm9JllQBe0WYCB9E79Tb1F2RaA"'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230206 21:43:46.926" endtime="20230206 21:43:46.926"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${saldo}</var>
+<arg>alias=Stone</arg>
+<arg>url=/api/v1/accounts/${ID}/statement</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230206 21:43:47.323" level="INFO">GET Request : url=https://sandbox-api.openbank.stone.com.br/api/v1/accounts/bccd3bf7-3369-4622-b769-71f93d66da87/statement 
+ path_url=/api/v1/accounts/bccd3bf7-3369-4622-b769-71f93d66da87/statement 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': '"Bearer "+"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUUUY0c2p5RUJfRUthV0VfSkxEZExHMVlKYXVnNklTV0tQbEdEeG9qNzhjIn0.eyJleHAiOjE2NzU2MTM1ODEsImlhdCI6MTY3NTYxMDg4MSwianRpIjoiNmE1YzVmOGUtYzhiZi00NWM4LTg5M2QtYzBhNmM5YTMzNWFiIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi5zYW5kYm94LnN0b25lLmNvbS5ici9hdXRoL3JlYWxtcy9zdG9uZV9hY2NvdW50Iiwic3ViIjoiZDliZDkzNmUtNzBkNi00OThmLTg2YzktOTA4N2VkZjY5OGNjIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6ImY1ZTNkY2JiLWRmODAtNDU0My1hYThlLTc2MTQ1N2IwNTgxMyIsImFjciI6IjEiLCJzY29wZSI6ImV4cGVuZDp0cmFuc2ZlcnM6ZXh0ZXJuYWwgZW50aXR5OmxlZ2FsX3dyaXRlIHBpeDplbnRyeV9jbGFpbSBwaXg6cGF5bWVudF9pbnZvaWNlIGVudGl0eTp3cml0ZSBleHBlbmQ6Ym9sZXRvaXNzdWFuY2UgZXhwZW5kOnBheW1lbnRzIGVudGl0eTpyZWFkIHByaW5jaXBhbDpjb25zZW50IGVtYWlsIHBpeDplbnRyeSBzdG9uZV9hY2NvdW50cyBwcm9maWxlIGV4cGVuZDpyZWFkIGV4cGVuZDp0cmFuc2ZlcnM6aW50ZXJuYWwgcGl4OnBheW1lbnQgc3RvbmVfc3ViamVjdF9pZCBwYXltZW50YWNjb3VudDoqIiwic2lkIjoiZjVlM2RjYmItZGY4MC00NTQzLWFhOGUtNzYxNDU3YjA1ODEzIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInN0b25lX3N1YmplY3RfaWQiOiJ1c2VyOjYzMjRhNGM4LTZhZTYtNDJmMi1hYmQxLWExZWEyOWIwY2QxNSIsIm5hbWUiOiJEZXNhZmlvIFFBIERlc2FmaW8gUUEiLCJzdG9uZV9hY2NvdW50cyI6ImVuYWJsZWQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZXNhZmlvcWFzdG9uZUBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiRGVzYWZpbyBRQSIsImxvY2FsZSI6InB0LUJSIiwiZmFtaWx5X25hbWUiOiJEZXNhZmlvIFFBIiwiZW1haWwiOiJkZXNhZmlvcWFzdG9uZUBnbWFpbC5jb20ifQ.buTPMwgsZlXWGV2E185jtvZu4REBVG4pXfP0Z-gh7hjT9BCS6BTjvAYF8YlvsjQdj8WY4gedskTiNYQxU48x6VblLtwrYWa9EeqcgiWP61m2OsONdhXB4YqFgrZYYYo2jjw2Pf7PHxjz6VpXxuzZxwIty1hdinVm7-UaGllnaX3ygpi2iOveYTQtPQUvw4SkI6MICLhoDggQJ_Ff4VDCuZB5ZumvY4UmLsljiZQmq7XOHbm1WFiHwC9yT2tabZZox-vvPKOQPePm3ojhmjGm1cvzf_4AoyUBCDb2krzE5zwUmUzXeVF-VDdDWO_7hm9JllQBe0WYCB9E79Tb1F2RaA"'} 
+ body=None 
+ </msg>
+<msg timestamp="20230206 21:43:47.324" level="INFO">GET Response : url=https://sandbox-api.openbank.stone.com.br/api/v1/accounts/bccd3bf7-3369-4622-b769-71f93d66da87/statement 
+ status=401, reason=Unauthorized 
+ headers={'Date': 'Tue, 07 Feb 2023 00:43:46 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'content-range,device-generated-id,platform-id,x-qa-identity-id,x-request-id,x-stone-challenge-solution,x-stone-idempotency-key,x-stone-verification-id,x-stone-verification-code,x-stone-action-token,token,x-account-id,x-customer-id', 'cache-control': 'max-age=0, private, must-revalidate', 'x-envoy-decorator-operation': 'banking-dmz-gateway-internal.banking-dmz-gateway.svc.cluster.local:80/*', 'x-envoy-upstream-service-time': '4', 'x-request-id': '61b03717-9b8f-9072-96c7-297ac73361d3', 'CF-Cache-Status': 'DYNAMIC', 'Set-Cookie': '__cf_bm=Zx6tCd11INGCnqG6Yti0exckMSOvOIczBOClUUcFDLM-1675730626-0-AWPbq7SCnpci3R4Tuv3nOwqKNTJgFA7MMOE2L+9xWUZG8Iryb5mVmtCR1T/m5nQiVo/JydFv4V7R0BKfoa7d2lM=; path=/; expires=Tue, 07-Feb-23 01:13:46 GMT; domain=.openbank.stone.com.br; HttpOnly; Secure; SameSite=None', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Server': 'cloudflare', 'CF-RAY': '795817e1af63a4d7-GRU'} 
+ body={"type":"srn:error:unauthenticated"} 
+ </msg>
+<msg timestamp="20230206 21:43:47.324" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: https://sandbox-api.openbank.stone.com.br/api/v1/accounts/bccd3bf7-3369-4622-b769-71f93d66da87/statement</msg>
+<status status="FAIL" starttime="20230206 21:43:46.926" endtime="20230206 21:43:47.325"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp_consulta}</arg>
+<arg>${saldo.json()}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230206 21:43:47.325" endtime="20230206 21:43:47.326"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${resp_consulta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230206 21:43:47.326" endtime="20230206 21:43:47.326"/>
+</kw>
+<status status="FAIL" starttime="20230206 21:43:46.925" endtime="20230206 21:43:47.326"/>
+</kw>
+<status status="FAIL" starttime="20230206 21:43:46.925" endtime="20230206 21:43:47.326">HTTPError: 401 Client Error: Unauthorized for url: https://sandbox-api.openbank.stone.com.br/api/v1/accounts/bccd3bf7-3369-4622-b769-71f93d66da87/statement</status>
+</test>
+<status status="FAIL" starttime="20230206 21:43:46.529" endtime="20230206 21:43:47.327"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Desafio Api Test">Desafio Api Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
