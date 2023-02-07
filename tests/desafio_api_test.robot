@@ -8,13 +8,13 @@ Resource   ../resources/gerarToken.robot
 *** Variables ***
 
 *** Test Cases ***
-#pre-condicao
-    #Gerar Token
-Cenário 01: Realizar tranferencia interna 
-    Consultar Extrato
-
+pre-condicao
+   ${TOKEN_}  Gerar Token         
+#Cenário 01: Realizar tranferencia interna 
+    Consultar Extrato    ${TOKEN_}
+    
 #Cenário 02: Fazer uma consulta no saldo 
-   #Consultar Saldo
+  Consultar Saldo outra forma     ${TOKEN_}
 
 #Cenário 03: Fazer consulta de Extrato 
-    #Consultar Extrato
+     Teste      ${TOKEN_}

@@ -49,7 +49,8 @@ Gerar Token
     #pegar e colocar em uma variavel 
      ${payload}=    Set Variable    ${resposta.json()}
      ${TOKEN_}=      Set Variable    ${payload['access_token']}
-    
+     
+     [Return]    ${TOKEN_}
     
        
 

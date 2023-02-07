@@ -13,15 +13,17 @@ ${BASE}    https://sandbox-api.openbank.stone.com.br
 *** Keywords ***
 
 Consultar Saldo
+     [Arguments]    ${TOKEN_}
   Create Session    Stone     ${BASE}    verify=true
-    ${headers}    Create Dictionary   Content-Type=application/json   Authorization=${TOKEN}
+    ${headers}    Create Dictionary   Content-Type=application/json   Authorization=Bearer ${TOKEN_} 
     ${saldo}=  Get On Session   alias=Stone     url=/api/v1/accounts/${ID}/balance 
     Set Test Variable    ${resp_consulta}    ${saldo.json()}
     log    ${resp_consulta}
 
 Consultar Saldo outra forma 
+     [Arguments]    ${TOKEN_}
     Create Session    stone    ${BASE}
-     ${headers}    Create Dictionary   Content-Type=application/json   Authorization=${TOKEN}    
+     ${headers}    Create Dictionary   Content-Type=application/json   Authorization=Bearer ${TOKEN_}    
      ${saldo}=  Get request    Stone     /api/v1/accounts/${ID}/balance     headers=${headers}
     Log to Console     ${saldo.status_code}
 

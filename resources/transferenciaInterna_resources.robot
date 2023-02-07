@@ -14,7 +14,7 @@ ${BASE}    https://sandbox-api.openbank.stone.com.br
 
 
 Realizar transferencia interna
-    
+     [Arguments]    ${TOKEN_}
     ${body}    Create Dictionary    
     ...    amount= 100  
     ...    account_id=${ID}  
@@ -46,23 +46,14 @@ Realizar transferencia interna
    
  
 Teste
+     [Arguments]    ${TOKEN_}
     Create Session    Stone       ${BASE}    verify=true
-
     
-     ${headers}    Create Dictionary    Authorization=${TOKEN}        accenpt=application/json     Content-Type=application/json 
+    
+     ${headers}    Create Dictionary    Authorization=Bearer ${TOKEN_}      accenpt=application/json     Content-Type=application/json 
 
-    # ${req_body} =  get file     C:/api/body.json
-  ${body}    Create Dictionary   
-       
-    ...       {
-    ...     "amount": 100,
-   ...     "account_id": "bccd3bf7-3369-4622-b769-71f93d66da87",
-   ...     "target":{
-   ...     "account":{
-   ...         "account_code":"475384"
-   ...     }
-   ...     }
-   ...    }
+      ${body} =      get file     C:/api/body.json
+ 
     
    
     ${response}=  POST On Session    
